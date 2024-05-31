@@ -33,8 +33,6 @@ server.listen(PORT, () => console.log(`Listening on ${ PORT }`)) //socket.io ver
 
 
 const express    = require('express')
-const cors       = require('cors')
-const socket     = require('socket.io')
 const bodyParser = require('body-parser')
 const validator  = require('express-validator')
 const Sequelize  = require('sequelize')
