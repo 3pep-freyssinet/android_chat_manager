@@ -1,0 +1,13 @@
+"name": "test",
+"version": "1.0.0",
+"description": "",
+"main": "index.js",
+ 
+"scripts": {
+"check": "check-dep"
+},
+"dependencies": {
+"check-unused-dependencies": "^1.1.6",
+"express": "^4.17.0"
+}
+} 
