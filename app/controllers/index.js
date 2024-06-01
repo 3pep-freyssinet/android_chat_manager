@@ -70,14 +70,14 @@ const getAllNotes = async (req, res) => {
 	console.log("//////type of notes = " + typeof notes);
 	console.log("//////JSON.stringify(notes) = " + JSON.stringify(notes)); //[{"id":1,"note":12,"trimestre":2,"ideleves":1}, .....
 	
-	/*
+	
 	//begin test
 	var mascots  = [
-    { name: 'Sammy', organization: "DigitalOcean", birth_year: 2012},
-    { name: 'Tux', organization: "Linux", birth_year: 1996},
-    { name: 'Moby Dock', organization: "Docker", birth_year: 2013}
-  ];
-  */
+		{ name: 'Sammy', organization: "DigitalOcean", birth_year: 2012},
+		{ name: 'Tux', organization: "Linux", birth_year: 1996},
+		{ name: 'Moby Dock', organization: "Docker", birth_year: 2013}
+    ];
+  
   
   var tagline = "No programming concept is complete without a cute animal mascot.";
 
@@ -86,12 +86,12 @@ const getAllNotes = async (req, res) => {
   //  tagline: tagline
   //});
   
-	var notes_ = [{ "aa":"bb"}];
+	var notes_ = [{ aa:"bb"}];
 		  
   return res.render('pages/index', {
-    //notes_: notes_ //JSON.stringify(notes) //{ notes }
 	mascotines: mascots,
     //tagline: tagline,
+	//notes_: notes_ //JSON.stringify(notes) //{ notes }
     //
   });
  
