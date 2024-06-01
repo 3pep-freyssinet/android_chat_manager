@@ -94,7 +94,7 @@ const getAllNotes = async (req, res) => {
     }
 		  
   return res.render('pages/index', {
-	user: user
+	user
   });
  
   

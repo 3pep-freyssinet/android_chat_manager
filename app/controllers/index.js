@@ -88,13 +88,19 @@ const getAllNotes = async (req, res) => {
   
 	var notes_ = [{ aa:"bb"}];
 	
+	const posts = [
+    {title: 'Title 1', body: 'Body 1' },
+    {title: 'Title 2', body: 'Body 2' },
+    {title: 'Title 3', body: 'Body 3' },
+    {title: 'Title 4', body: 'Body 4' },
+]
 	const user = {
 		firstName: 'Tim',
 		lastName: 'Cook',
     }
 		  
   return res.render('pages/index', {
-	user
+	articles: posts
   });
  
   
