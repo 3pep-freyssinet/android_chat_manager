@@ -15,6 +15,7 @@
     <p>Welcome to templating using EJS</p>
 	<h2>Variable</h2>
     <p><%= tagline %></p>
+	<p>received mascot <%= mascot %></p>
 	
 	<ul>
       <% mascots.forEach(function(mascot) { %>
@@ -29,9 +30,10 @@
 	<!-- an ejs file is importing a variable called 'foo' inferieur%= foo %> -->
 	
 	<!-- an ejs file importing or include -->
-	<p>Received notes : <%= notes %></p>
+	<!-- <p>Received notes : <%= notes %></p> ne marche pas -->
+	<p>Received notes : <%- notes %></p>
 	
-	<p>Number of notes : <%= notes.length %></p>
+	<!-- <p>Number of notes : <%= notes.length %></p>
 	
 	<!--  an ejs file is using javascript code -->
 	<p> <% const notes_ = JSON.parse(notes);%>
