@@ -40,7 +40,7 @@ const getAllNotes = async (req, res) => {
     
         // Add order conditions here....
         order: [
-            ['ideleves', 'DESC'],
+            ['ideleves', 'ASC'],
             ['trimestre', 'ASC'],
         ]
 	
