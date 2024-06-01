@@ -72,7 +72,7 @@ const getAllNotes = async (req, res) => {
 	
 	
 	//begin test
-	var mascots  = [
+	var mascots_  = [
 		{ name: 'Sammy', organization: "DigitalOcean", birth_year: 2012},
 		{ name: 'Tux', organization: "Linux", birth_year: 1996},
 		{ name: 'Moby Dock', organization: "Docker", birth_year: 2013}
@@ -89,7 +89,7 @@ const getAllNotes = async (req, res) => {
 	var notes_ = [{ aa:"bb"}];
 		  
   return res.render('pages/index', {
-	mascots: mascots,
+	mascots: mascots_,
     //tagline: tagline,
 	//notes_: notes_ //JSON.stringify(notes) //{ notes }
     //
