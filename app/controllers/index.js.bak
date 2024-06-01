@@ -67,8 +67,8 @@ const getAllNotes = async (req, res) => {
 	  */
     });
 	
-	//console.log("//////type of notes = " + typeof notes);
-	//console.log("//////JSON.stringify(notes) = " + JSON.stringify(notes)); //[{"id":1,"note":12,"trimestre":2,"ideleves":1}, .....
+	console.log("//////type of notes = " + typeof notes);
+	console.log("//////JSON.stringify(notes) = " + JSON.stringify(notes)); //[{"id":1,"note":12,"trimestre":2,"ideleves":1}, .....
 	
 	//begin test
 	var mascots = [
@@ -89,7 +89,7 @@ const getAllNotes = async (req, res) => {
   return res.render('pages/index', {
     mascots: mascots,
     tagline: tagline,
-      notes: { "aa":"bb"} //JSON.stringify(notes) //{ notes }
+    notes: { "aa":"bb"} //JSON.stringify(notes) //{ notes }
   });
  
   
