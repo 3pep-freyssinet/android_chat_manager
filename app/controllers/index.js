@@ -87,12 +87,14 @@ const getAllNotes = async (req, res) => {
   //});
   
 	var notes_ = [{ aa:"bb"}];
+	
+	const user = {
+		firstName: 'Tim',
+		lastName: 'Cook',
+    }
 		  
   return res.render('pages/index', {
-	tascots: mascots_,
-    //tagline: tagline,
-	//notes_: notes_ //JSON.stringify(notes) //{ notes }
-    //
+	user: user
   });
  
   
