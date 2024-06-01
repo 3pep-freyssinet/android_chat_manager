@@ -15,7 +15,8 @@
     <p>Welcome to templating using EJS</p>
 	<ul>
         <%_ if(typeof user !== "undefined"){ _%>
-			<p><%= user%></p>
+			<p> firstName : <%= user.firstName %></p>
+			
 		<%_ } _%>
     </ul>
   </div>
