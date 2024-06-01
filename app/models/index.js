@@ -52,6 +52,8 @@ sequelize = new Sequelize(
 							});
 */
 
+console.log("********* '" + env + " : options = '" +JSON.stringify(config.options));
+
 sequelize = new Sequelize(process.env[config.database], 
 							process.env[config.user], 
 							process.env[config.password], 
@@ -61,7 +63,7 @@ sequelize = new Sequelize(process.env[config.database],
 //sequelize = new Sequelize(process.env[config.use_env_variable], config);
 if(config.use_env_variable) {
  console.log("********* 'connection string' *************");
- console.log("********* 'model/index.js' : process.env[config.use_env_variable] = " + process.env[config.use_env_variable]);
+ console.log("********* 'model/index.js' : process.edevelopmentnv[config.use_env_variable] = " + process.env[config.use_env_variable]);
   sequelize = new Sequelize(process.env[config.use_env_variable], config);
 } else {
   console.log("********* 'connection parameter' *************config.options = " +  Object.keys(config.options));
