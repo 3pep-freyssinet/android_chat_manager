@@ -15,10 +15,12 @@
     <p>Welcome to templating using EJS</p>
 	<h2>Variable</h2>
     <p><%= tagline %></p>
-	<p>received mascot <%= mascot %></p>
+	<!-- <p>received mascot <%= mascot %></p> ne marche pas -->
 	
 	<ul>
-      <% mascots.forEach(function(mascot) { %>
+      <% const  ml = mascot.length;%>
+	  mascot length = <%= ml %>
+		<% mascots.forEach(function(mascot) { %>
         <li>
           <strong><%= mascot.name %></strong>
           representing <%= mascot.organization %>,
