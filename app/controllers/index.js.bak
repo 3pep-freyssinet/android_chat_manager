@@ -100,7 +100,7 @@ const getAllNotes = async (req, res) => {
     }
 		  
   return res.render('pages/index', {
-	articles: posts
+	user
   });
  
   
