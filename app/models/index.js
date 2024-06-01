@@ -12,7 +12,7 @@ const env 		= process.env.NODE_ENV || 'development';
 console.log(" models.index *************process.env.NODE_ENV = " + process.env.NODE_ENV);
 console.log(" models.index *****************process.env.PORT = " + process.env.PORT);
 console.log(" models.index ******************************env = " + env);
-const config = require(__dirname + '/../config/config.js')[env]; //moi
+const config = require(__dirname + '/../config/config.js')[env]; //moi veut dire dans '/../config/config.js' prendre la cle 'env' qui est égal à 'development'
 
 const db = {};
 

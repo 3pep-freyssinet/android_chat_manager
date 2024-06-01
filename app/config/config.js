@@ -56,17 +56,17 @@ module.exports = {
 */
 
 
-//local + env + parameters
+// env + parameters
 module.exports = {
   development: {
-    "username": 'USER',     // USERNAME is used by windows in system environment variable //, 'postgres',
-    "password": 'PASSWORD', //'', 
-    "database": 'DATABASE', //'postgres', 
+    "user"    : 'USER',     			// USERNAME is used by windows in system environment variable //, 'postgres',
+    "password": 'PASSWORD', 			//'', 
+    "database": 'DATABASE', 			//'postgres', 
     "options":{
-		"host": 'HOST',     //'127.0.0.1',
-		//"port": 5432,
+		"host": 'process.env.HOST',    	//'127.0.0.1',
+		"port": 'process.env.PORT',		//5432
 		"dialect": 'postgres',
-		"ssl": true
+		"client_encoding": 'utf8',
 	}
   },
   test: {
@@ -78,8 +78,8 @@ module.exports = {
     "password": 'PASSWORD', //'', 
     "database": 'DATABASE', //'postgres', 
     "options":{
-		"host": process.env.HOST,
-		"port": process.env.PORT,
+		"host": 'process.env.HOST',
+		"port": 'process.env.PORT',
 	    "dialect":'postgres',   
 	    "client_encoding": 'utf8',
 	    dialectOptions: {
