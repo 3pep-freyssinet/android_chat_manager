@@ -16,7 +16,7 @@
 	<h2>Variable</h2>
     <p><%= tagline %></p>
 	<p>received mascot <%= mascots %></p> 
-	
+	<p>received notes <%= notes %></p>
 	<ul>
       <% const  ml = mascots.length;%>
 	  mascots length = <%= ml %>
