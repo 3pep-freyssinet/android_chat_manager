@@ -13,8 +13,19 @@
   <div class="jumbotron">
     <h1>This is great</h1>
     <p>Welcome to templating using EJS</p>
-	<h2>Variable</h2>
-	<h1>Hi, I am <%= user.firstName  %></h1>
+	<ul>
+        <% articles.forEach((article)=> { %>
+            <li>
+                <h2>
+                    <%= article.title %>
+                </h2>
+                <p>
+                    <%= article.body %>
+                </p>
+            </li>
+            <hr />
+        <% }) %>
+    </ul>
   </div>
 </main>
 
