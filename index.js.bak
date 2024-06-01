@@ -46,7 +46,7 @@ const Sequelize  = require('sequelize')
 //and then import: var c = require('./controllers');. You can then use them via c.users and c.posts.
 //******************************************************************
 
-const port       = process.env.PORT1 || 5001; //the 'port' is the same as 'aiven' database port.  
+const port       = process.env.PORT1 || 5000; //the 'port' is the same as 'aiven' database port.  
 
 const app        = express()
 const http       = require('http').Server(app)
