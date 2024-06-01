@@ -89,7 +89,7 @@ const getAllNotes = async (req, res) => {
 	var notes_ = [{ aa:"bb"}];
 		  
   return res.render('pages/index', {
-	mascotss: mascots_,
+	tascots: mascots_,
     //tagline: tagline,
 	//notes_: notes_ //JSON.stringify(notes) //{ notes }
     //
