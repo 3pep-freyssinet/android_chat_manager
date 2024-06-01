@@ -16,20 +16,6 @@
 	<h2>Variable</h2>
     <p><%= tagline %></p>
 	<p>received mascottttt <%= mascotssss %></p> 
-	<ul>
-      <% const  ml = mascots.length;%>
-	  mascots length = <%= ml %>
-		<% mascots.forEach(function(mascot) { %>
-        <li>
-          <strong><%= mascot.name %></strong>
-          representing <%= mascot.organization %>,
-          born <%= mascot.birth_year %>
-        </li>
-      <% }); %>
-    
-	</ul>
-	
-	
   </div>
 </main>
 
