@@ -71,13 +71,7 @@ const getAllNotes = async (req, res) => {
 	console.log("//////JSON.stringify(notes) = " + JSON.stringify(notes)); //[{"id":1,"note":12,"trimestre":2,"ideleves":1}, .....
 	
 	
-	//begin test
-	var mascots_  = [
-		{ name: 'Sammy', organization: "DigitalOcean", birth_year: 2012},
-		{ name: 'Tux', organization: "Linux", birth_year: 1996},
-		{ name: 'Moby Dock', organization: "Docker", birth_year: 2013}
-    ];
-  
+	
   
   var tagline = "No programming concept is complete without a cute animal mascot.";
 
@@ -100,7 +94,7 @@ const getAllNotes = async (req, res) => {
     }
 		  
   return res.render('pages/all_notes', {
-	user
+		notes_
   });
  
   
