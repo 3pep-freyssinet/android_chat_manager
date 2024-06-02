@@ -80,7 +80,7 @@ const getAllNotes = async (req, res) => {
   //  tagline: tagline
   //});
   
-	var notes_ = [{ aa:"bb"}];
+	//var notes_ = [{ aa:"bb"}];
 	
 	const posts = [
     {title: 'Title 1', body: 'Body 1' },
@@ -94,7 +94,7 @@ const getAllNotes = async (req, res) => {
     }
 		  
   return res.render('pages/all_notes', {
-		notes_
+		notes
   });
  
   
