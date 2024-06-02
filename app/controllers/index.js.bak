@@ -99,7 +99,7 @@ const getAllNotes = async (req, res) => {
 		lastName: 'Cook',
     }
 		  
-  return res.render('pages/index', {
+  return res.render('../../views/pages/index', {
 	user
   });
  
