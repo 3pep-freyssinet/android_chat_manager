@@ -31,12 +31,14 @@
 			<th>ideleves</th>
         </tr>	
 		
-			<% for (var i = 0; i < notes_.length; i++) { %>
+			<% cont notes_ = JSON.stringify(notes);
+			   for (var i = 0; i < notes_.length; i++) {
+			%>
 				<tr>
-					<td><%= notes[i].id %> </td>
-					<td><%= notes[i].note %> </td>
-					<td><%= notes[i].trimestre %> </td>
-					<td><%= notes[i].ideleves %> </td>
+					<td><%= notes_[i].id %>        </td>
+					<td><%= notes_[i].note %>      </td>
+					<td><%= notes_[i].trimestre %> </td>
+					<td><%= notes_[i].ideleves %>  </td>
 					
 				</tr>
 			<% }; %>

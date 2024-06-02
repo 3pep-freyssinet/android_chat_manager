@@ -15,7 +15,7 @@
     <p>Welcome to templating using EJS</p>
 	<ul>
         
-			<p> Notes : <%= notes_ %></p>
+			<p> Notes : <%= notes %></p>
 			
 	
     </ul>
@@ -31,7 +31,9 @@
 			<th>ideleves</th>
         </tr>	
 		
-			<% for (var i = 0; i < notes_.length; i++) { %>
+			<% cont notes_ = JSON.stringify(notes);
+			   for (var i = 0; i < notes_.length; i++) {
+			%>
 				<tr>
 					<td><%= notes_[i].id %> </td>
 					<td><%= notes_[i].note %> </td>
