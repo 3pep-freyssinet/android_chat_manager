@@ -99,7 +99,7 @@ const getAllNotes = async (req, res) => {
 		lastName: 'Cook',
     }
 		  
-  //return res.render('../../pages/all_notes.ejs', {
+  //return res.render('pages/all_notes.ejs', {
 	//user
   //});
  
