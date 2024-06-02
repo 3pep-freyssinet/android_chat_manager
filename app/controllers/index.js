@@ -68,31 +68,15 @@ const getAllNotes = async (req, res) => {
     });
 	
 	console.log("//////type of notes = " + typeof notes);
-	console.log("//////JSON.stringify(notes) = " + JSON.stringify(notes)); //[{"id":1,"note":12,"trimestre":2,"ideleves":1}, .....
+	//console.log("//////JSON.stringify(notes) = " + JSON.stringify(notes)); //[{"id":1,"note":12,"trimestre":2,"ideleves":1}, .....
 	
-	const notes_ = JSON.stringify(notes);
+	//const notes_ = JSON.stringify(notes);
 	
-  
-  var tagline = "No programming concept is complete without a cute animal mascot.";
-
-  //res.render('pages/index', {
-  //  mascots: mascots,
-  //  tagline: tagline
-  //});
-  
-	//var notes_ = [{ aa:"bb"}];
+	const notes_ = Array.from(Object.values(notes));
 	
-	const posts = [
-    {title: 'Title 1', body: 'Body 1' },
-    {title: 'Title 2', body: 'Body 2' },
-    {title: 'Title 3', body: 'Body 3' },
-    {title: 'Title 4', body: 'Body 4' },
-]
-	const user = {
-		firstName: 'Tim',
-		lastName: 'Cook',
-    }
-		  
+	//console.log("//////array (notes) = " + notes_); 
+	//console.log("//////array (notes) = " + notes_[0].id);
+	
   return res.render('pages/all_notes', {
 		notes_
   });

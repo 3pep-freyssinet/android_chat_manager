@@ -14,8 +14,8 @@
     <h1>This is great</h1>
     <p>Welcome to templating using EJS</p>
 	<ul>
-        
 			<p> Notes : <%= notes_ %></p>
+			<p> Notes length : <%= notes_.length %></p>
     </ul>
   </div>
 </main>

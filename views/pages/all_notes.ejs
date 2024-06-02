@@ -17,6 +17,28 @@
 			<p> Notes : <%= notes_ %></p>
 			<p> Notes length : <%= notes_.length %></p>
     </ul>
+	<table>   
+		<tr>
+			<th>HomeTeam</th>
+		</tr>	
+		<tr>
+            <th>id</th>
+            <th>note</th>
+            <th>trimestre</th>
+			<th>ideleves</th>
+        </tr>	
+		
+			<% for (var i = 0; i < notes_.length; i++) { %>
+				<tr>
+					<td><%= notes_[i].id %> </td>
+					<td><%= notes_[i].note %> </td>
+					<td><%= notes_[i].trimestre %> </td>
+					<td><%= notes_[i].ideleves %> </td>
+					
+				</tr>
+			<% }; %>
+    </table>
+
   </div>
 </main>
 
