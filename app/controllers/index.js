@@ -99,12 +99,12 @@ const getAllNotes = async (req, res) => {
 		lastName: 'Cook',
     }
 		  
-  return res.render('../../views/pages/all_notes.ejs', {
-	user
-  });
+  //return res.render('../../pages/all_notes.ejs', {
+	//user
+  //});
  
   
-  //return res.status(200).json({ notes });
+  return res.status(200).json({ user });
   } catch (error) {
     return res.status(500).send("getAllNotes error : "+error.stack); //error.message
   }
