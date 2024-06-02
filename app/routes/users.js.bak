@@ -11,7 +11,7 @@ const controllers = require('../controllers'); //'index.js' is expected in folde
 
 router.get('/route', (req, res) => {
 	res.send('hello the world in route');  //http://localhost:3000/route/  cf server
-    console.log("get('/' : Welcome ");
+    console.log("get('/' : 'hello the world in route ");
 });
 
 router.get("/read", function(req, res) {
@@ -23,6 +23,7 @@ router.get("/read", function(req, res) {
 console.log("routes : router = " + JSON.stringify(router));
 
 //router.post('/notes', controllers.createPost);
+router.get('/all_users', controllers.getAllUsers);				//http://localhost:3000/api/all_notes
 
 router.get('/all_notes', controllers.getAllNotes);				//http://localhost:3000/api/all_notes
 

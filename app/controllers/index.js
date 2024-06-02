@@ -30,6 +30,68 @@ const createNotes = async (req, res) => {
 	}
 }
 
+
+//Get all users
+const getAllUsers = async (req, res) => {
+	//const users = {"name": 'tom'};
+	//return res.status(200).json({ users });
+  
+  
+  try {
+    const users = await models.Users.findAll({
+    
+        // Add order conditions here....
+		/*
+        order: [
+            ['ideleves', 'ASC'],
+            ['trimestre', 'ASC'],
+        ]
+	     */
+	
+	
+	/*
+     attributes: ['foo', 'bar'], //To select only some attributes as SELECT foo, bar FROM ...
+	 attributes: ['foo', ['bar', 'baz'], 'qux'], // SELECT foo, bar AS baz, qux FROM ...
+	 attributes: ['foo', [sequelize.fn('COUNT', sequelize.col('hats')), 'n_hats'], 'bar'], // SELECT foo, COUNT(hats) AS n_hats, bar FROM ...
+	 attributes: { exclude: ['baz'] }, //-- Assuming all columns are 'id', 'foo', 'bar', 'baz' and 'qux', SELECT id, foo, bar, qux FROM ...
+	*/
+	
+	 /*
+	  include: [
+        {
+          model: models.Comment,
+          as: 'comments'
+        },
+        {
+          model: models.User,
+          as: 'author'
+        }
+      ]
+	  */
+    });
+	
+	//console.log("//////type of users = " + typeof users);
+	//console.log("//////JSON.stringify(users) = " + JSON.stringify(users)); //[{"id":1,"note":12,"trimestre":2,"ideleves":1}, .....
+	
+	//const notes_ = JSON.stringify(users);
+	
+	const users_ = Array.from(Object.values(users));
+	
+	//console.log("//////array (users) = " + users_); 
+	//console.log("//////array (users) = " + users_[0].id);
+	
+  return res.render('pages/all_users', {
+		users_
+  });
+ 
+  
+  //return res.status(200).json({ users });
+  } catch (error) {
+    return res.status(500).send("getAllUsers error : "+error.stack); //error.message
+  }
+}//getAllUsers
+
+
 //Get all notes
 const getAllNotes = async (req, res) => {
 	//const notes = {"name": 'tom'};
@@ -254,6 +316,7 @@ module.exports = {
   createNotes,
   getOneNoteById,
   getAllNotes,
+  getAllUsers,
   updateOneNote,
   deleteNote,
   getClassOneEleveById,

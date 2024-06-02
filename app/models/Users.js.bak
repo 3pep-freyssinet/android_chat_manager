@@ -1,0 +1,156 @@
+const { Model } = require('sequelize');
+module.exports  = (sequelize, DataTypes) => {
+  class Users extends Model {
+    /**
+     * Helper method for defining associations.
+     * This method is not a part of Sequelize lifecycle.
+     * The `models/index` file will call this method automatically.
+     */
+    static associate(models) {
+      // define association here
+	  
+    }
+  }
+  
+  /*
+  id integer NOT NULL DEFAULT nextval('users_id_seq'::regclass),
+    nickname character varying(255) COLLATE pg_catalog."default" NOT NULL,
+    imageprofile bytea,
+    status bit(3) NOT NULL,
+    connected bigint NOT NULL DEFAULT 0,
+    lastconnected bigint NOT NULL DEFAULT 0,
+    disconnected bigint NOT NULL DEFAULT 0,
+    blacklistauthor character varying(255) COLLATE pg_catalog."default",
+    notseenmessages smallint NOT NULL,
+    connectedwith jsonb NOT NULL,
+    CONSTRAINT users_pkey PRIMARY KEY (id),
+    CONSTRAINT constraint_name UNIQUE (nickname)
+  
+  */
+  
+  
+  Users.init(
+  {
+    id: {
+	  type: DataTypes.INTEGER,
+	  allowNull: false,
+	  defaultValue: null,
+	  comment: null,
+	  primaryKey: true,
+	  field: "id",
+	  autoIncrement: true
+    },
+    nickname: {
+      type: DataTypes.CHAR(255),
+      allowNull: false,
+      defaultValue: null,
+      comment: null,
+      primaryKey: false,
+	  unique: true,
+      field: "nickname",
+      autoIncrement: false
+    },
+	imageprofile:{
+      type: DataTypes.BLOB, // BLOB (bytea for PostgreSQL),
+      allowNull: true,
+      defaultValue: null,
+      comment: null,
+      primaryKey: false,
+      field: "imageprofile",
+      autoIncrement: false
+    },
+	status:{
+      type: DataTypes.TINY, 
+      allowNull: false,
+      defaultValue: 0,
+      comment: null,
+      primaryKey: false,
+      field: "status",
+      autoIncrement: false
+    },
+	connected:{
+      type: DataTypes.RANGE(DataTypes.BIGINT), 
+      allowNull: false,
+      defaultValue: 0,
+      comment: null,
+      primaryKey: false,
+      field: "connected",
+      autoIncrement: false
+    },
+    lastconnected:{
+      type: DataTypes.RANGE(DataTypes.BIGINT),
+      allowNull: false,
+      defaultValue: 0,
+      comment: null,
+      primaryKey: false,
+      field: "lastconnected",
+      autoIncrement: false
+    },
+	disconnected:{
+      type: DataTypes.RANGE(DataTypes.BIGINT),
+      allowNull: false,
+      defaultValue: 0,
+      comment: null,
+      primaryKey: false,
+      field: "disconnected",
+      autoIncrement: false
+    },
+	blacklistauthor:{
+      type: DataTypes.CHAR(255),
+      allowNull: true,
+      defaultValue: 0,
+      comment: null,
+      primaryKey: false,
+      field: "blacklistauthor",
+      autoIncrement: false
+    },
+	notseenmessages:{
+      type: DataTypes.RANGE(DataTypes.SMALLINT),
+      allowNull: false,
+      defaultValue: 0,
+      comment: null,
+      primaryKey: false,
+      field: "notseenmessages",
+      autoIncrement: false
+    },
+	connectedwith:{
+      type: DataTypes.JSONB,
+      allowNull: true,
+      defaultValue: '{}',
+      comment: null,
+      primaryKey: false,
+      field: "connectedwith",
+      autoIncrement: false
+    } 
+	
+	 //createdAt: false,	//remove these statements if there are no corresponding columns in the original table. Put 'timestamps: false below.
+     //updatedAt: false
+  },
+  {
+      // options
+      sequelize,
+      modelName: 'Users',
+      tableName: 'users',
+	  timestamps: false,
+      underscore: true
+    },
+  );
+  
+  /*
+  Users.associate = function(models) {
+    // associations can be defined here
+	Eleves.hasMany(models.Notes, {
+      foreignKey: 'ideleves',
+      as: 'notes',
+      onDelete: 'CASCADE',
+    });
+	
+	Users.belongsTo(models.Classes, {
+      foreignKey: 'idclasses',
+      as: 'section',
+      onDelete: 'CASCADE',
+    });
+  }
+  */
+  return Users;
+};
