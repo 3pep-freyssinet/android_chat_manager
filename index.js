@@ -309,6 +309,7 @@ app
 	
 	app.use(route)
     app.set('view engine', 'ejs');
+	app.use(express.static("./public"));
 	
 	http.listen(port,() => {
 	  console.log('Listening on ' + port)

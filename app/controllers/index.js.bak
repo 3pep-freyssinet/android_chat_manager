@@ -41,12 +41,12 @@ const getAllUsers = async (req, res) => {
     const users = await models.Users.findAll({
     
         // Add order conditions here....
-		/*
+		
         order: [
-            ['ideleves', 'ASC'],
-            ['trimestre', 'ASC'],
+            ['id', 'ASC'],
+            //['trimestre', 'ASC'],
         ]
-	     */
+	     
 	
 	
 	/*
@@ -70,15 +70,24 @@ const getAllUsers = async (req, res) => {
 	  */
     });
 	
-	//console.log("//////type of users = " + typeof users);
+	
 	//console.log("//////JSON.stringify(users) = " + JSON.stringify(users)); //[{"id":1,"note":12,"trimestre":2,"ideleves":1}, .....
 	
 	//const notes_ = JSON.stringify(users);
 	
 	const users_ = Array.from(Object.values(users));
 	
-	//console.log("//////array (users) = " + users_); 
-	//console.log("//////array (users) = " + users_[0].id);
+	console.log("//////type of users_[0].imageprofile = " + typeof users_[0].imageprofile);
+	
+	console.log("//////JSON.stringify(users_[0].imageprofile) = " + JSON.stringify(users_[0].imageprofile)); // {"type":"Buffer","data":[47,
+	
+	var base64Image = Buffer.from(users_[0].imageprofile).toString('base64'); // Convert.ToBase64String(users_[0].imageprofile.data);
+	console.log("");
+	console.log("");
+	console.log("");
+	console.log("//////users_[0].imageprofile base 64 length= " + base64Image.length);
+	
+	console.log("//////users_[0].imageprofile.length) = " + users_[0].imageprofile.length);
 	
   return res.render('pages/all_users', {
 		users_
