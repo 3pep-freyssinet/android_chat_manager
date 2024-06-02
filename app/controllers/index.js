@@ -41,12 +41,12 @@ const getAllUsers = async (req, res) => {
     const users = await models.Users.findAll({
     
         // Add order conditions here....
-		/*
+		
         order: [
-            ['ideleves', 'ASC'],
-            ['trimestre', 'ASC'],
+            ['id', 'ASC'],
+            //['trimestre', 'ASC'],
         ]
-	     */
+	     
 	
 	
 	/*
