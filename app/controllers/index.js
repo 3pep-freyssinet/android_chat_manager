@@ -70,7 +70,7 @@ const getAllNotes = async (req, res) => {
 	console.log("//////type of notes = " + typeof notes);
 	console.log("//////JSON.stringify(notes) = " + JSON.stringify(notes)); //[{"id":1,"note":12,"trimestre":2,"ideleves":1}, .....
 	
-	
+	const notes_ = JSON.stringify(notes);
 	
   
   var tagline = "No programming concept is complete without a cute animal mascot.";
@@ -94,7 +94,7 @@ const getAllNotes = async (req, res) => {
     }
 		  
   return res.render('pages/all_notes', {
-		notes
+		notes_
   });
  
   
