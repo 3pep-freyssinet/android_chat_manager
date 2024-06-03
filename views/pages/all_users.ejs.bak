@@ -37,16 +37,14 @@
 		
 			<% for (var i = 0; i < users_.length; i++) { %>
 				<tr>
-					<% if(users_[i].imageprofile != null){
-							var base64Image = Buffer.from(users_[i].imageprofile).toString('base64');
-					%>
-							<td> 	<img style='display:block; width:100px;height:100px;' id='base64image'                 
-									src='data:image/jpeg;base64, <%= base64Image %> '/>
+					
+							<td> 	<img style='display:block; width:75px;height:75px;' id='base64image'                 
+									src='data:image/jpeg;base64, <%= users_[i].imageprofile %> '/>
 							</td>
 					<%		
 					   }else{
 					%>
-							<td>  <img style='display:block; width:100px;height:100px;' id='avatarimage'                 
+							<td>  <img style='display:block; width:75px;height:75px;' id='avatarimage'                 
 									src='/images/avatar-profil.png'/> 
 									
 							</td>

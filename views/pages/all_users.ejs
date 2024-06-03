@@ -41,7 +41,7 @@
 							var base64Image = Buffer.from(users_[i].imageprofile).toString('base64');
 					%>
 							<td> 	<img style='display:block; width:75px;height:75px;' id='base64image'                 
-									src='data:image/jpeg;base64, <%= base64Image %> '/>
+									src='data:image/jpeg;base64, <%= users_[i].imageprofile %> '/>
 							</td>
 					<%		
 					   }else{

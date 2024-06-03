@@ -1,5 +1,8 @@
-const models = require('../models');
-const Op 	 = require("sequelize").Op;
+const models 		 = require('../models');
+const Op 	 		 = require("sequelize").Op;
+const { QueryTypes } = require('sequelize');
+
+console.log("'controllers/index.js' : models = " + Object.keys(models));
 
 const createNote = async (req, res) => {
   try {
@@ -38,14 +41,44 @@ const getAllUsers = async (req, res) => {
   
   
   try {
-    const users = await models.Users.findAll({
+    
+	/*
+	var query = `SELECT nickname,` 									    +
+					`encode(imageprofile, 'escape') as imageprofile,`	+
+					`status,` 											+
+					`connected,` 										+
+					`lastconnected,`									+ 
+					`disconnected,` 									+
+					`blacklistauthor,` 									+
+					`notseenmessages,` 									+
+					`connectedwith ` 									+
+		`FROM users ` 													+
+		`ORDER BY nickname ASC `; 
+	*/
+	
+	//const users = await models.sequelize.query(SELECT encode(imageprofile, \'escape\') as imageprofile FROM `Users`', {
+	const users = await models.sequelize.query(`SELECT  nickname, 
+														encode(imageprofile, 'escape') as imageprofile,
+														status,
+														connected,
+														lastconnected,
+														disconnected,
+														blacklistauthor,
+														notseenmessages,
+														connectedwith
+												FROM Users`, { //error in 'ORDER BY nickname ASC'	
+	
+						type: QueryTypes.SELECT,
+	});
+
+	//const users = await models.Users.findAll({
     
         // Add order conditions here....
 		
-        order: [
-            ['id', 'ASC'],
+    //    order: [
+    //        ['id', 'ASC'],
             //['trimestre', 'ASC'],
-        ]
+    //    ]
 	     
 	
 	
@@ -68,26 +101,28 @@ const getAllUsers = async (req, res) => {
         }
       ]
 	  */
-    });
+    //});
 	
 	
 	//console.log("//////JSON.stringify(users) = " + JSON.stringify(users)); //[{"id":1,"note":12,"trimestre":2,"ideleves":1}, .....
 	
 	//const notes_ = JSON.stringify(users);
 	
-	const users_ = Array.from(Object.values(users));
+	const users_  = Array.from(Object.values(users));
 	
 	console.log("//////type of users_[0].imageprofile = " + typeof users_[0].imageprofile);
+	console.log("//////(users_[0].imageprofile) = " + users_[0].imageprofile); // /9j/4AAQS....o0ul1//9k=
+	//console.log("//////JSON.stringify(users_[0].imageprofile) = " + JSON.stringify(users_[0].imageprofile)); //  "/9j/4AAQS....o0ul1//9k="
 	
-	//console.log("//////JSON.stringify(users_[0].imageprofile) = " + JSON.stringify(users_[0].imageprofile)); // {"type":"Buffer","data":[47,
+	//const base64Image  = Buffer.from(users_[0].imageprofile).toString('base64'); // Convert.ToBase64String(users_[0].imageprofile.data);
+	//const base64Image_ = btoa(String.fromCharCode.apply(null, new Uint8Array(users_[0].imageprofile)));
 	
-	var base64Image = Buffer.from(users_[0].imageprofile).toString('base64'); // Convert.ToBase64String(users_[0].imageprofile.data);
 	console.log("");
 	console.log("");
 	console.log("");
-	console.log("//////users_[0].imageprofile base 64 length= " + base64Image.length);
+	//console.log("//////users_[0].imageprofile base 64 length= " + base64Image);
 	
-	console.log("//////users_[0].imageprofile.length) = " + users_[0].imageprofile.length);
+	//console.log("//////users_[0].imageprofile.length) = " + users_[0].imageprofile.length);
 	
   return res.render('pages/all_users', {
 		users_
