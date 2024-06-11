@@ -271,7 +271,7 @@ app
         root: path.join(__dirname)
     };
 	
-	const response = 'Hello World from express listening on ' + port;
+	const response = 'Hello World from express listening on ' + PORT;
     //res.send(response);
 	
 	var mascots = [
