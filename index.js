@@ -47,7 +47,7 @@ const Sequelize  = require('sequelize')
 //******************************************************************
 
 const PORT        = process.env.PORT || 7000; //the 'port' is the same as 'aiven' database port. do not use '6000' 
-//const REMOTE_HOST = 'https://android-chat-server.onrender.com/';
+const REMOTE_HOST = 'https://android-chat-server.onrender.com/';
 //const REMOTE_HOST = 'http://localhost:5000';
 //////////////////////////////////////////////////
 /*original marche
