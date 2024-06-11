@@ -56,6 +56,7 @@ const getAllUsers = async (req, res) => {
 		`ORDER BY nickname ASC `; 
 	*/
 	
+	//use backtick (`) to allow placeholder, which are embedded expressions delimited by a dollar sign and curly braces: ${expression}
 	//const users = await models.sequelize.query(SELECT encode(imageprofile, \'escape\') as imageprofile FROM `Users`', {
 	const users = await models.sequelize.query(`SELECT  nickname, 
 														encode(imageprofile, 'escape') as imageprofile,
@@ -68,7 +69,7 @@ const getAllUsers = async (req, res) => {
 														connectedwith
 												FROM Users`, { //error in 'ORDER BY nickname ASC'	
 	
-						type: QueryTypes.SELECT,
+						type: QueryTypes.SELECT, //perhaps also : 'QueryTypes.RAW'
 	});
 
 	//const users = await models.Users.findAll({
@@ -111,7 +112,7 @@ const getAllUsers = async (req, res) => {
 	const users_  = Array.from(Object.values(users));
 	
 	console.log("//////type of users_[0].imageprofile = " + typeof users_[0].imageprofile);
-	console.log("//////(users_[0].imageprofile) = " + users_[0].imageprofile);
+	console.log("//////(users_[0].imageprofile) = " + users_[0].imageprofile); // /9j/4AAQS....o0ul1//9k=
 	//console.log("//////JSON.stringify(users_[0].imageprofile) = " + JSON.stringify(users_[0].imageprofile)); //  "/9j/4AAQS....o0ul1//9k="
 	
 	//const base64Image  = Buffer.from(users_[0].imageprofile).toString('base64'); // Convert.ToBase64String(users_[0].imageprofile.data);
@@ -125,7 +126,7 @@ const getAllUsers = async (req, res) => {
 	//console.log("//////users_[0].imageprofile.length) = " + users_[0].imageprofile.length);
 	
   return res.render('pages/all_users', {
-		users_
+		users_ //it must be the same in target : 'all_users.ejs'
   });
  
   

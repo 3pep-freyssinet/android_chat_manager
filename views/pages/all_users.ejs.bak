@@ -14,14 +14,13 @@
     <h1>This is great</h1>
     <p>Welcome to templating using EJS</p>
 	<ul>
-			<p> Number of users : <%= users_.length %></p>
+		<p> Number of users : <%= users_.length %></p>
     </ul>
-	<table>   
-		<tr>
-			<th>HomeTeam</th>
-		</tr>	
-		
-		<tr>
+  </div>
+  <div class="tableFixHead">
+      <table>
+        <thead>
+          <tr>
             <th>image</th>
 			<th>id</th>
             <th>nickname</th>
@@ -33,13 +32,29 @@
 			<th>blacklistauthor</th>
 			<th>notseenmessages</th>
 			<th>connectedwith</th>
-        </tr>	
-		
-			<% for (var i = 0; i < users_.length; i++) { %>
+          </tr>
+        </thead>
+        <tbody>
+          <%    
+			//sord by 'id'
+			var users__ = users_.reduce((acc, curr) => {   //see node.js ref for more details.
+				var ind = acc.findIndex((item) => item.id > curr.id);
+				if (ind === -1) ind = acc.length;
+				acc.splice(ind, 0, curr);
+			return acc;
+			}, []);
+
+				
+				for (var i = 0; i < users_.length; i++) { 
+		  %>
 				<tr>
-					
+					<%	var image_profile_length;
+						if(users__[i].imageprofile != null){
+							//var base64Image = Buffer.from(users__[i].imageprofile).toString('base64');
+							image_profile_length = users__[i].imageprofile.length;
+					%>
 							<td> 	<img style='display:block; width:75px;height:75px;' id='base64image'                 
-									src='data:image/jpeg;base64, <%= users_[i].imageprofile %> '/>
+									src='data:image/jpeg;base64, <%= users__[i].imageprofile %> '/>
 							</td>
 					<%		
 					   }else{
@@ -52,23 +67,25 @@
 					 }
 					%>
 					
-					<td><%= users_[i].id %> </td>
-					<td><%= users_[i].nickname %> </td>
-					<td><%= users_.length %> </td> <!-- users_[i].imageprofile.length -->
-					<td><%= users_[i].status %> </td>
-					<td><%= users_[i].connected %> </td>
-					<td><%= users_[i].lastconnected %> </td>
-					<td><%= users_[i].disconnected %> </td>
-					<td><%= users_[i].blacklistauthor %> </td>
-					<td><%= users_[i].notseenmessages %> </td>
-					<% const connectedwiths_ = JSON.stringify(users_[i].connectedwith); %>
-					<td><%= connectedwiths_ %> </td>
+					<td><%= users__[i].id 				%> 	</td>
+					<td><%= users__[i].nickname 		%> 	</td>
+					<td><%= image_profile_length 		%> 	</td> <!-- users_[i].imageprofile.length -->
+					<td><%= users__[i].status 			%> 	</td>
+					<td><%= users__[i].connected 		%> 	</td>
+					<td><%= users__[i].lastconnected 	%> 	</td>
+					<td><%= users__[i].disconnected 		%> 	</td>
+					<td><%= users__[i].blacklistauthor 	%>  </td>
+					<td><%= users__[i].notseenmessages 	%>  </td>
+					<% const connectedwiths__ = JSON.stringify(users__[i].connectedwith); %>
+					<td><%= connectedwiths__ 			%> 	</td>
 					
 				</tr>
 			<% }; %>
-    </table>
+          </tr>
+        </tbody>
+      </table>
+    </div>
 
-  </div>
 </main>
 
 <footer>

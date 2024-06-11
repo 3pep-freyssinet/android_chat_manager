@@ -56,8 +56,10 @@ const getAllUsers = async (req, res) => {
 		`ORDER BY nickname ASC `; 
 	*/
 	
+	//use backtick (`) to allow placeholder, which are embedded expressions delimited by a dollar sign and curly braces: ${expression}
 	//const users = await models.sequelize.query(SELECT encode(imageprofile, \'escape\') as imageprofile FROM `Users`', {
-	const users = await models.sequelize.query(`SELECT  nickname, 
+	const users = await models.sequelize.query(`SELECT  id,
+														nickname, 
 														encode(imageprofile, 'escape') as imageprofile,
 														status,
 														connected,
@@ -68,7 +70,7 @@ const getAllUsers = async (req, res) => {
 														connectedwith
 												FROM Users`, { //error in 'ORDER BY nickname ASC'	
 	
-						type: QueryTypes.SELECT,
+						type: QueryTypes.SELECT, //perhaps also : 'QueryTypes.RAW'
 	});
 
 	//const users = await models.Users.findAll({
@@ -125,7 +127,7 @@ const getAllUsers = async (req, res) => {
 	//console.log("//////users_[0].imageprofile.length) = " + users_[0].imageprofile.length);
 	
   return res.render('pages/all_users', {
-		users_
+		users_ //it must be the same in target : 'all_users.ejs'
   });
  
   

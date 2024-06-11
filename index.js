@@ -32,7 +32,7 @@ server.listen(PORT, () => console.log(`Listening on ${ PORT }`)) //socket.io ver
 */
 
 
-const express    = require('express')
+
 const bodyParser = require('body-parser')
 const validator  = require('express-validator')
 const Sequelize  = require('sequelize')
@@ -46,11 +46,27 @@ const Sequelize  = require('sequelize')
 //and then import: var c = require('./controllers');. You can then use them via c.users and c.posts.
 //******************************************************************
 
-const port       = process.env.PORT || 5000; //the 'port' is the same as 'aiven' database port.  
-
+const PORT        = process.env.PORT || 7000; //the 'port' is the same as 'aiven' database port. do not use '6000' 
+//const REMOTE_HOST = 'https://android-chat-server.onrender.com/';
+//const REMOTE_HOST = 'http://localhost:5000';
+//////////////////////////////////////////////////
+/*original marche
 const app        = express()
 const http       = require('http').Server(app)
-//const io         = socket(http)
+const io         = socket(http)
+*/
+//////////////////////////////////////////////////
+
+/////////////////////////////////
+const express    = require('express')
+const { createServer } = require("http");
+const { Server }       = require("socket.io");
+const app        = express();
+const http       = createServer(app);
+//const io         = new Server(http, { /* options */ });
+///////////////////////////////
+
+
 //const Op         = Sequelize.Op
 
 //const pgsqldb    = require('./queries')
@@ -311,6 +327,54 @@ app
     app.set('view engine', 'ejs');
 	app.use(express.static("./public"));
 	
-	http.listen(port,() => {
-	  console.log('Listening on ' + port)
+	http.listen(PORT,() => {
+	  console.log('Listening on ' + PORT)
 	});
+	
+	var io = require('socket.io-client');
+	var socket = io.connect(REMOTE_HOST, {reconnect: true});
+
+	// Add a connect listener
+	socket.on('connect', function (socket) { //'connect' is a key word
+		console.log('Connected!');
+	});
+	socket.emit('test_socket', 'Hello the world', (msg)=>{
+			console.log('Ack from server : nb users = ' + msg);
+		}
+	);
+	socket.emit('monitor_users');
+	socket.on('monitor_users_back', (myArrayMap)=> {
+		
+		console.log('jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj monitor_users_back : myArrayMap.size = ' + myArrayMap + " jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj");
+		
+		var usersMap = new Map(myArrayMap)
+		
+		var usersMap = new Map(myArrayMap)
+		console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! = " + usersMap + " !!!!!!!!!!!!!!!!!!!!!!!!!!!");
+		for (let user of usersMap) {
+			//console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! user " + user + " !!!!!!!!!!!!!!!!");
+			console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! id = " + user[0] + " name = " + user[1] + " !!!!!!!!!!!!!!!!");
+		}
+    
+
+		/*
+		console.log('jjjj: (myMap is instanceof Map) = ' + (myMap instanceof Map) + " jjjj");
+		console.log('jjjj: myMap.keys = ' + Object.keys(myMap) + " jjjj");
+		
+		if(myMap != null){
+			console.log("");
+			console.log("")
+			const keys = myMap.keys(); //iterator
+			let key = keys.next();
+			
+			while (!	key.done) {
+				 console.log("map  value = " + myMap.get(key.value) + " key =  " + key.value); // key : value
+				 key = keys.next();		 //next key
+			}
+			console.log("");
+			console.log("");
+		}
+		*/
+		
+	});
+	
