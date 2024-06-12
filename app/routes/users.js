@@ -24,6 +24,7 @@ console.log("routes : router = " + JSON.stringify(router));
 
 
 router.get('/all_users', controllers.getAllUsers);				//http://localhost:3000/api/all_users
+router.get('/connected_users', controllers.getConnectedUsers);	//http://localhost:3000/api/all_users
 
 //router.post('/notes', controllers.createPost);
 

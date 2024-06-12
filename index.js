@@ -49,6 +49,7 @@ const Sequelize  = require('sequelize')
 const PORT        = process.env.PORT || 7000; //the 'port' is the same as 'aiven' database port. do not use '6000' 
 const REMOTE_HOST = 'https://android-chat-server.onrender.com/';
 //const REMOTE_HOST = 'http://localhost:5000';
+
 //////////////////////////////////////////////////
 /*original marche
 const app        = express()
@@ -342,7 +343,12 @@ app
 			console.log('Ack from server : nb users = ' + msg);
 		}
 	);
+	
+	const connected_users = require('./common-data/'); //expected 'index.js' in folder './common-data/' 
+	var users = connected_users.connected_users;
+	
 	socket.emit('monitor_users');
+	
 	socket.on('monitor_users_back', (myArrayMap)=> {
 		
 		console.log('jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj monitor_users_back : myArrayMap.size = ' + myArrayMap + " jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj");
@@ -356,7 +362,10 @@ app
 			console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! id = " + user[0] + " name = " + user[1] + " !!!!!!!!!!!!!!!!");
 		}
     
-
+		
+		//export the received data
+		users.push(myArrayMap)
+		
 		/*
 		console.log('jjjj: (myMap is instanceof Map) = ' + (myMap instanceof Map) + " jjjj");
 		console.log('jjjj: myMap.keys = ' + Object.keys(myMap) + " jjjj");

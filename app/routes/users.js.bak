@@ -22,8 +22,11 @@ router.get("/read", function(req, res) {
 
 console.log("routes : router = " + JSON.stringify(router));
 
+
+router.get('/all_users', controllers.getAllUsers);				//http://localhost:3000/api/all_users
+router.get('/connected_users', controllers.getAllUsers);		//http://localhost:3000/api/all_users
+
 //router.post('/notes', controllers.createPost);
-router.get('/all_users', controllers.getAllUsers);				//http://localhost:3000/api/all_notes
 
 router.get('/all_notes', controllers.getAllNotes);				//http://localhost:3000/api/all_notes
 

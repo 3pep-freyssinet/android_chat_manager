@@ -1,6 +1,7 @@
-const models 		 = require('../models');
-const Op 	 		 = require("sequelize").Op;
-const { QueryTypes } = require('sequelize');
+const models 		  = require('../models');
+const Op 	 		  = require("sequelize").Op;
+const { QueryTypes }  = require('sequelize');
+const connected_users = require('../../common-data');
 
 console.log("'controllers/index.js' : models = " + Object.keys(models));
 
@@ -33,6 +34,16 @@ const createNotes = async (req, res) => {
 	}
 }
 
+
+
+//Get connected users
+const getConnectedUsers = async (req, res) => {
+	//console.log("getConnectedUsers : connected_users.connected_users = " + connected_users.connected_users);
+	
+	const users = {"getting": 'hello the world', "connected_users": connected_users.connected_users};
+	
+	return res.status(200).json({ users });
+};
 
 //Get all users
 const getAllUsers = async (req, res) => {
@@ -363,6 +374,7 @@ module.exports = {
   getOneNoteById,
   getAllNotes,
   getAllUsers,
+  getConnectedUsers,
   updateOneNote,
   deleteNote,
   getClassOneEleveById,

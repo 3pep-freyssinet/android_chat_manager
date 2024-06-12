@@ -1,6 +1,7 @@
-const models 		 = require('../models');
-const Op 	 		 = require("sequelize").Op;
-const { QueryTypes } = require('sequelize');
+const models 		  = require('../models');
+const Op 	 		  = require("sequelize").Op;
+const { QueryTypes }  = require('sequelize');
+const connected_users = require('../../common-data');
 
 console.log("'controllers/index.js' : models = " + Object.keys(models));
 
@@ -34,6 +35,18 @@ const createNotes = async (req, res) => {
 }
 
 
+
+//Get connected users
+const getConnectedUsers = async (req, res) => {
+	console.log("getConnectedUsers : connected_users.connected_users = " + connected_users.connected_users);
+	for(user in connected_users.connected_users){
+		console.log(" ** user = " + user);
+	}
+	const users = {"getting": 'hello the world', "connected_users": connected_users.connected_users};
+	
+	return res.status(200).json({ users });
+};
+
 //Get all users
 const getAllUsers = async (req, res) => {
 	//const users = {"name": 'tom'};
@@ -58,7 +71,8 @@ const getAllUsers = async (req, res) => {
 	
 	//use backtick (`) to allow placeholder, which are embedded expressions delimited by a dollar sign and curly braces: ${expression}
 	//const users = await models.sequelize.query(SELECT encode(imageprofile, \'escape\') as imageprofile FROM `Users`', {
-	const users = await models.sequelize.query(`SELECT  nickname, 
+	const users = await models.sequelize.query(`SELECT  id,
+														nickname, 
 														encode(imageprofile, 'escape') as imageprofile,
 														status,
 														connected,
@@ -362,6 +376,7 @@ module.exports = {
   getOneNoteById,
   getAllNotes,
   getAllUsers,
+  getConnectedUsers,
   updateOneNote,
   deleteNote,
   getClassOneEleveById,
